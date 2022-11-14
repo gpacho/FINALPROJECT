@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+<scrip type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<scrip type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+{% block changes %}
+<div class="container text-center">
+
+    <h1>{{ article.title }}</h1>
+    <hr>
+    <p>{{ article.content | safe }}</p>
+    <hr>
+    <p>{{ article.content_upload | safe  }}</p>
+    
+    <hr>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.media }}
+        
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Subir cambios</button>
+    </form>
+    <br>
+
+</div>
+    {% endblock %}
+    

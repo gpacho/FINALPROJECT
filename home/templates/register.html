@@ -1,0 +1,105 @@
+{% extends 'index.html' %} {% load static %} {% block title %}Registrarse{%
+endblock %} {% block logo %}<img
+  src="{% static 'images/logo.png' %}"
+  alt="CoderMedia"
+/>{% endblock %} {% block wrapper %}wrapper wrapper-user{% endblock %} {% block
+header-container %}fullwidth{% endblock %} {% block content %}
+<div id="titlebar-alt" class="gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Registrarse</h2>
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li>Registrarse</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-5 offset-xl-3">
+      <div class="login-register-page margin-bottom-60">
+        <div class="welcome-text">
+          <h3>¡Vamos a crear tu cuenta!</h3>
+          <span
+            >¿Ya tenés cuenta?
+            <a href="{% url 'login' %}">Ingresá desde aquí</a></span
+          >
+        </div>
+        {% if form.errors %}
+        <div class="notification notice closeable">
+          {{ form.errors }}
+          <a class="close" href="#"></a>
+        </div>
+        {% endif %}
+        <form method="post" action="">
+          {% csrf_token %}
+          <div>
+            <input
+              type="text"
+              class="input-text with-border"
+              name="first_name"
+              placeholder="Nombre"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="input-text with-border"
+              name="last_name"
+              placeholder="Apellido"
+            />
+          </div>
+          <div class="input-with-icon-left">
+            <i class="icon-feather-user"></i>
+            <input
+              type="text"
+              class="input-text with-border"
+              name="username"
+              placeholder="Usuario"
+            />
+          </div>
+          <div class="input-with-icon-left">
+            <i class="icon-feather-mail"></i>
+            <input
+              type="text"
+              class="input-text with-border"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <div class="input-with-icon-left">
+            <i class="icon-feather-lock"></i>
+            <input
+              type="password"
+              class="input-text with-border"
+              name="password1"
+              placeholder="Contraseña"
+            />
+          </div>
+          <div class="input-with-icon-left">
+            <i class="icon-feather-lock"></i>
+            <input
+              type="password"
+              class="input-text with-border"
+              name="password2"
+              placeholder="Repetir Contraseña"
+            />
+          </div>
+          <button
+            class="button full-width button-sliding-icon ripple-effect margin-top-10"
+            type="submit"
+          >
+            Registrarme <i class="icon-material-outline-arrow-right-alt"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="margin-top-70"></div>
+{% endblock %}

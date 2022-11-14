@@ -1,0 +1,143 @@
+{% extends 'index.html' %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script> 
+{% load static %}
+{% block changes %}
+<h2>Buscador:</h2> 
+
+<form class="search-form " action="{% url 'home:search' %}" method="GET">
+    <div>
+        <input type="text" name="medic_search" id="buscar-medico" placeholder="Ingrese nombre">
+        <input class="btn btn-primary" type="submit" value="Buscar Medico">
+        <input type="text" name="pacient_search" id="buscar-paciente" placeholder="Ingrese paciente">
+        <input class="btn btn-primary"type="submit" value="Buscar Paciente">
+        <input type="text" name="turn_search" id="buscar-turno" placeholder="Ingrese dia del turno">
+        <input class="btn btn-primary"type="submit" value="Buscar Turno">
+    </div>
+</form>
+<hr></hr>
+
+{% if medics %}
+<h5>Medicos disponibles:</h5>
+<div class="row d-flex justify-content-center">
+            <!--Grid column-->
+    <div class="col-md-15">
+        <table class="table table-striped table-light">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Especializacion</th>
+                    <th scope="col">Detalle</th>
+                    {% if user.is_superuser %}
+                    <th scope="col">Actualizar</th>
+                    <th scope="col">Borrar</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for medic in medics %}
+                    <tr>
+                    <th scope="row">{{medic.id}}</th>
+                    <td>"Dr/a. {{medic.name}}"</td>
+                    <td>{{medic.surname}}</td>
+                    <td>{{medic.medic_type}}</td>
+                    <td><a href="{% url 'medics:medics-detail' medic.id %}">
+                    <i class="fa fa-eye" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    {% if user.is_superuser %}
+                    <td><a href="{% url 'medics:medics-update' medic.id %}">
+                        <i class="fa fa-pencil" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    <td><a href="{% url 'medics:medics-delete' medic.id %}">
+                        <i class="fa fa-trash" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+{% endif %}
+        <!--Grid column-->
+
+{% if pacients %}
+<h5>Pacientes registrados:</h5>
+<div class="row d-flex justify-content-center">
+    <!--Grid column-->
+    <div class="col-md-15">
+        <table class="table table-striped table-light">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Detalle</th>
+                    {% if user.is_superuser %}
+                    <th scope="col">Actualizar</th>
+                    <th scope="col">Borrar</th>
+                    {% endif %}
+                </tr>
+            </thead>
+
+        <tbody>
+                {% for pacient in pacients %}
+                <tr>
+                    <th scope="row">{{pacient.id}}</th>
+                    <td>{{pacient.name}}</td>
+                    <td>{{pacient.surname}}</td>
+                    <td>{{pacient.dni}}</td>
+                    <td><a href="{% url 'pacients:pacients-detail' pacient.id %}">
+                        <i class="fa fa-eye" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    {% if user.is_superuser %}
+                    <td><a href="{% url 'pacients:pacients-update' pacient.id %}">
+                        <i class="fa fa-pencil" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    <td><a href="{% url 'pacients:pacients-delete' pacient.id %}">
+                        <i class="fa fa-trash" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endif %}
+
+{% if turn %}
+<h5>Turnos:</h5>
+<div class="row d-flex justify-content-center">
+    <!--Grid column-->
+    <div class="col-md-15">
+        <table class="table table-striped table-light">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha:</th>
+                    {% if user.is_superuser %}
+                    <th scope="col">Actualizar</th>
+                    <th scope="col">Borrar</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for turn in turn %}
+                <tr>
+                    <th scope="row">{{turn.id}}</th>
+                    <td>{{turn.day}}</td>
+                    {% if user.is_superuser %}
+                    <td><a href="{% url 'extra:turns-update' turn.id %}">
+                        <i class="fa fa-pencil" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    <td><a href="{% url 'extra:turns-delete' turn.id %}">
+                        <i class="fa fa-trash" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}  
+            </tbody>
+        </table>
+{% endif %}
+</div>                
+{% endblock %}

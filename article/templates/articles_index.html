@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<scrip type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<scrip type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+{% block changes %}
+
+    
+
+{% for article in articles %}
+<div class="container text-center">
+    
+    <h1>{{ article.title }}</h1>
+    
+    <div class="body">{{ article.content | safe}}</div>
+    
+    <dic class="body-upload">{{ article.content_upload | safe}}</dic>
+
+    Uploaded date: {{ article.created_at }}
+    
+</div>
+{% endfor %}
+<br>
+<div class="text-center">
+    <div class="text-center">
+    <p><a class="btn btn-primary" href="{% url 'add-comment' eachArticle.id %}">  Add Comment </a></p>
+
+       <br>
+       <hr>
+
+           {% for comment in eachArticle.comments.all %}
+
+               <h5><strong>Name: {{ comment.commenter_name }}</strong></h5>
+               <p>{{ comment.comment_body }}</p>
+               <p><small>{{ comment.date_added }}</small></p>
+
+
+               
+               
+
+           {% endfor %}
+
+  
+
+
+
+    </div>
+ </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <h2>Eliminar Medico</h2>
+    <hr></hr>
+    <div class="form-medics">
+        <p>Estás seguro de eliminar el Medico: {{ medic.name }}?</p>
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="boton-form">
+                <input class="btn btn-warning" type="submit" value="Si, eliminar.">
+                <a class="btn btn-primary" href="{% url 'medics:medics-list' %}" >Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+    {% endblock %}

@@ -1,0 +1,129 @@
+h2 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+.form-medics{
+    margin: auto;
+    width: fit-content;
+    padding: 10px;
+    text-align: center;
+}
+
+.boton-form{
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.medics{
+    display: grid;
+    place-items: center;
+}
+
+.medics a{
+    border-radius: 5px;
+    border-color: rgb(40,40,40)
+}
+
+.for{
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+#boton-medico{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#foto{
+    background-image: linear-gradient(0deg, rgba(40,40,40,0.5), rgba(40,40,40,0.5)), url(../js/manual-hatdc-blog.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.search-form {
+    margin: auto;
+    width: fit-content;
+    padding: 10px;
+    text-align: center;
+}
+
+.search-form div{
+    margin-top: 10px;
+}
+
+.resultados{
+    display: grid;
+    place-items: center;
+}
+
+.cuerpo{
+    min-height: 38vh;
+    justify-content: center;
+}
+
+.edicion{
+    color: black;
+    text-decoration: none;
+}
+
+#edit{
+    font-size: 17px;
+    margin-top: auto;
+    padding-bottom: 8px;
+}
+
+.form-signin{
+    justify-content: center;
+    text-align: center;
+}
+
+.perfil{
+    display: grid;
+    place-items: center;
+}
+
+.perfil .nombre{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#user_form{
+    display: grid;
+    place-items: center;
+    padding-top: 30px;
+}
+
+#foto-perfil{
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#avatar_form{
+    display: grid;
+    place-items: center;
+    margin-top: 30px;
+}
+#avatar_form button{
+    margin-top: 15px;
+}
+
+.social-media{
+    display: flex;
+    justify-content: center;
+}  
+
+.social-media a{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.about{
+    display: grid;
+    place-items: center;
+    margin-top: 10px;
+}

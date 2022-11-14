@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<h2>Lista de Medicos:</h2>
+<div class="container">
+    <a class="btn btn-primary justify-content-right"  href="{% url 'medics:medics-add' %}">Crear nuevo Medico</a>
+    <hr></hr>
+        {% if user.is_authenticated %}
+        <div class="row d-flex justify-content-center">
+
+            <!--Grid column-->
+            <div class="col-md-10">
+                <table class="table table-striped table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Especializacion</th>
+                            <th scope="col">Detalle</th>
+                            {% if user.is_superuser %}
+                            <th scope="col">Actualizar</th>
+                            <th scope="col">Borrar</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for medic in medic_list %}
+                        <tr>
+                            <th scope="row">{{medic.id}}</th>
+                            <td>{{medic.name}}</td>
+                            <td>{{medic.surname}}</td>
+                            <td>{{medic.medic_type}}</td>
+                            <td><a href="{% url 'medics:medics-detail' medic.id %}">
+                                <i class="fa fa-eye" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                            </td>
+                            {% if user.is_superuser %}
+                            <td><a href="{% url 'medics:medics-update' medic.id %}">
+                                <i class="fa fa-pencil" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                            </td>
+                            <td><a href="{% url 'medics:medics-delete' medic.id %}">
+                                <i class="fa fa-trash" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+            
+                    </tbody>
+                </table>
+            
+            </div>
+            <!--Grid column-->
+            </div>
+        </div>
+        {% else %}
+        <h2>Debes estar logeado</h2>
+        {% endif %}
+ 
+
+{% endblock %}
+

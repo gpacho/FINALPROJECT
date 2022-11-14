@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <h2>Edición de Usuario</h2>
+        <form action="" method="POST" id="user_form">
+            
+            {% csrf_token %}
+            {{ form.as_p }} 
+            <!-- <img height="160px" src="{{url}}" alt=""> -->
+            <a href="{% url 'user:avatar-load' %}" style="text-decoration: none;">Cambiar Foto de perfil</a>
+            
+            <input type="submit" id="boton-medico"  class="btn btn-primary" value="Guardar Usuario" />
+        </form>
+</div>
+{% endblock %}

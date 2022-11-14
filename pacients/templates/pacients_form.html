@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <h2>Formulario para insersión de un nuevo Paciente</h2>
+    <div class="form-medics">    
+        <hr></hr>
+        <form class='form' action='' method='POST'>
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <div class="boton-form">
+                <input type="submit" class="btn btn-dark" value="Crear Paciente" />
+            </div>
+        </form>
+    </div>  
+</div>
+    
+{% endblock %}

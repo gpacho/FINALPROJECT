@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <h2>Detalle de los turnos</h2>
+    <div class="form-medics">
+        <hr></hr>
+        <p><h3>Turno: {{ turns.day }}</h3></p>
+        <p><a class="btn btn-primary" href="{% url 'extra:turns-list' %}">Regresar a la lista de turnos</a></p>
+    </div>
+</div>
+{% endblock %}

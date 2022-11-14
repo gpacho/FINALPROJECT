@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <div class="perfil text-center">
+        <h2>Perfil del Usuario:<br>{{user.username}}</h2>
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'name' in message.tags %}
+                    <p class="alert alert-success" >{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="nombre">
+            <p>
+                Nombre: {{user.first_name}}
+            </p>
+                Apellido: {{user.last_name}}
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'image' in message.tags %}
+                    <p class="alert alert-success" >{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <img height='100px' src="{{url}}" alt="">
+        <a class="btn btn-primary" id="boton-medico" href="{% url 'user:profile_update' %}">Editar usuario</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <h2>Cargar Foto de Perfil</h2>
+    <hr></hr>
+    <h3 style="text-align: center;">Usuario: {{user.username}}</h3>
+    
+    <form method="POST" enctype="multipart/form-data" id="avatar_form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Cargar Imagen</button>
+    </form>
+</div>
+{% endblock %}

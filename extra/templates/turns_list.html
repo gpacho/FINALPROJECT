@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+
+<h2>Lista de Turnos</h2>
+<div class="container">
+    <a class="btn btn-primary justify-content-right"  href="{% url 'extra:turns-add' %}">Crear nuevo Turno</a>
+    <hr></hr>
+<div class="row d-flex justify-content-center">
+
+    <!--Grid column-->
+    <div class="col-md-10">
+        <table class="table table-striped table-light">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha:</th>
+                    {% if user.is_superuser %}
+                    <th scope="col">Actualizar</th>
+                    <th scope="col">Borrar</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for turn in turns_list %}
+                <tr>
+                    <th scope="row">{{turn.id}}</th>
+                    <td>{{turn.day}}</td>
+                    {% if user.is_superuser %}
+                    <td><a href="{% url 'extra:turns-update' turn.id %}">
+                        <i class="fa fa-pencil" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    <td><a href="{% url 'extra:turns-delete' turn.id %}">
+                        <i class="fa fa-trash" style="font-size:20px;color: rgb(0, 128, 236);"> </i></a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+    
+            </tbody>
+        </table>
+    
+    </div>
+    <!--Grid column-->
+    </div>
+</div>
+{% endblock %}
+

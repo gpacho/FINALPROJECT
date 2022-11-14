@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block changes %}
+<div class="cuerpo">
+    <p class="alert alert-success text-center">Usuario Creado Exitosamente!</p>
+    <h2>Desea Iniciar Sesion?</h2>
+    <div class="form-medics">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="boton-form">
+                <a class="btn btn-primary" href="{% url 'user:login' %}" >Iniciar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
